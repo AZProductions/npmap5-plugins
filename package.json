@@ -1,7 +1,7 @@
 {
   "name": "svg-icons-fork",
   "bundle": "SVGPlugin",
-  "version": "0.0.3-c",
+  "version": "0.0.4-c",
   "description": "Add SVG icons to Maplibre gl maps",
   "type": "module",
   "keywords": [
