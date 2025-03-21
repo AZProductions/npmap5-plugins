@@ -50,20 +50,19 @@ class SVGPlugin {
     getTypes = SVGPlugin.getTypes;
 
     static stringifyConfig = (iconConfig: Partial<IconConfigType>): string => {
-        // Escape any brackets added by the user, so we can use the mustache functions to pull data in
         const replacer = function (_: string, value: any) {
-            if (typeof value === "string" && value.includes("{") && value.includes("}")) {
-                return value.replace(/{/g, '\\{').replace(/}/g, '\\}');
+            // Preserve variable placeholders like {airframe}
+            if (typeof value === "string" && value.startsWith("{") && value.endsWith("}")) {
+                return ["get", value.slice(1, -1)]; // Convert "{airframe}" to ["get", "airframe"]
             }
             return value;
-        }
-
-        // Stringify with replacer function, then encode
+        };
+    
         let encoded = encodeURIComponent(JSON.stringify(iconConfig, replacer));
-
-        // Unescape brackets after encoding
-        return encoded.replace(/%5C%5C%7B/g, '{').replace(/%5C%5C%7D/g, '}');
-    }
+    
+        return encoded;
+    };
+    
 
     stringifyConfig = SVGPlugin.stringifyConfig
 
