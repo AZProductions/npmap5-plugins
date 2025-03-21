@@ -34,6 +34,7 @@ Supported values are any of the fields initial interface:
 [`pixelRatio`, `sdf`, `stretchX`, `stretchY`, `content`, `threshold`,`customTranformation`], any other values get passed in as CSS. For CSS values, tt will convert `camaelCaseCss` to `kebab-case-css` but you can use the `kebab-case` as well, I just find it harder to read, and many libraries seem to do that converstion. So you can use `strokeWidth` or `stroke-width`.
 
 ## customTransformations
+
 You can pass your own function in so when an image is missing, you can add your own custom code. The example shows how to use this function to add a background to an existing SVG through code.
 
 ## Options
@@ -41,7 +42,7 @@ You can pass your own function in so when an image is missing, you can add your 
 The MaplibreSVGPlugin constructor accepts the following options:
 
 ```typescript
-interface MaplibreSVGPluginOptions {
+interface SVGPluginOptions {
         defaultImage: MaplibreImage | string, // Accepts any image that maplibre accepts as well as an SVG string
         defaultImageOptions: { // These are all the image options directly from maplibre
             pixelRatio: number; // Defaults to the current pixelRatio (via window.devicePixelRatio)
